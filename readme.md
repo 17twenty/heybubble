@@ -8,8 +8,8 @@ A simple demo using [HTMX](https://htmx.org/docs/), [Gorilla](https://github.com
 go build && ./heybubble
 ```
 
-I've brought in a tailwind binary stored in `tailwind-tools`.
-This was installed and setup with the following:
+I use the static tailwind binary and store it in `tools` but it's in .gitignore as it's sizey.
+You can grab this and add it to the path with the following:
 
 ```bash
 $ cd tools
@@ -19,6 +19,8 @@ $ mv tailwindcss-macos-x64 tailwindcss
 $ PATH=$PATH:`pwd`/tools
 ...
 ```
+
+Note: _You will likely want the right binary for your OS/arch_
 
 ## Building Tailwind Templates
 
@@ -42,7 +44,7 @@ $ go run *.go
 time=2023-05-30T11:16:15.487+10:00 level=INFO source=/Users/nickglynn/Projects/htmx-demo/server.go:41 msg="Starting server..." SERVER=http://localhost:8080
 ```
 
-## URLs
+## TODO
 
-- [Static Index](http://localhost:8080/static/index.html)
-- [Template Fragment Index](http://localhost:8080/)
+- Blackfriday for markdown
+- So many things
