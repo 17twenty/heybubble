@@ -664,12 +664,12 @@ select {
   overflow: hidden;
 }
 
-.rounded-lg {
-  border-radius: 0.5rem;
-}
-
 .rounded-xl {
   border-radius: 0.75rem;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
 }
 
 .bg-slate-400 {
@@ -696,6 +696,18 @@ select {
   fill: currentColor;
 }
 
+.fill-neutral-200 {
+  fill: #e5e5e5;
+}
+
+.fill-sky-500 {
+  fill: #0ea5e9;
+}
+
+.fill-gray-400 {
+  fill: #9ca3af;
+}
+
 .p-2 {
   padding: 0.5rem;
 }
@@ -717,11 +729,6 @@ select {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-sky-500 {
-  --tw-text-opacity: 1;
-  color: rgb(14 165 233 / var(--tw-text-opacity));
 }
 
 .underline {
