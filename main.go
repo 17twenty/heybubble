@@ -57,20 +57,12 @@ func main() {
 
 	// Entry route
 	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		log.Println(r.Host)
 		tmpl := template.Must(template.ParseFiles("templates/index.tpl.html"))
 		err := tmpl.Lookup("index.tpl.html").Execute(w, nil)
 		if err != nil {
 			logger.Error("Failed to execute template", "template", tmpl.Name, "error", err)
 		}
-	})
-
-	r.HandleFunc("/breakfast", func(w http.ResponseWriter, r *http.Request) {
-		//slog.Error("Called without implementation", "method", r.Method)
-		partialEncoder(w, "results", map[string]string{
-			"Eggs":     "Fried",
-			"Bacon":    "Venison",
-			"Sausages": "Pork",
-		})
 	})
 
 	log.Fatal(http.ListenAndServe("0.0.0.0:"+port, r))
