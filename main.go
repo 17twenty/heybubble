@@ -1,11 +1,9 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
-	"net/url"
 	"os"
 	"text/template"
 
@@ -29,8 +27,6 @@ func main() {
 	if fromEnv := os.Getenv("ENV"); fromEnv != "" {
 		appEnv = fromEnv
 	}
-	// Resources for logging
-	// https://betterstack.com/community/guides/logging/logging-in-go/
 
 	opts := &slog.HandlerOptions{
 		AddSource: true,
@@ -43,7 +39,7 @@ func main() {
 	}
 	logger = slog.New(handler)
 
-	logger.Info("Starting server...", "server", fmt.Sprintf("http://localhost:%s", port))
+	logger.Info("Starting server...", "server", fmt.Sprintf("http://0.0.0.0:%s", port))
 
 	r := mux.NewRouter()
 
@@ -55,27 +51,18 @@ func main() {
 		})
 	})
 
+	// Setup filehandling
+	fs := http.FileServer(http.Dir("static"))
+	r.PathPrefix("/static").Handler(http.StripPrefix("/static", fs))
+
+	// Entry route
 	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		tmpl := template.Must(template.ParseGlob("templates/*.tpl.html"))
-		// You can see the available templates here
-		// log.Println(tmpl.DefinedTemplates())
+		tmpl := template.Must(template.ParseFiles("templates/index.tpl.html"))
 		err := tmpl.Lookup("index.tpl.html").Execute(w, nil)
 		if err != nil {
 			logger.Error("Failed to execute template", "template", tmpl.Name, "error", err)
 		}
 	})
-
-	r.HandleFunc("/grab-it", func(w http.ResponseWriter, r *http.Request) {
-		tmpl := template.Must(template.ParseGlob("templates/*.tpl.html"))
-		err := tmpl.Lookup("includeme2").Execute(w, nil)
-		if err != nil {
-			logger.Error("Failed to execute template", "template", tmpl.Name, "error", err)
-		}
-	})
-
-	// Setup filehandling
-	fs := http.FileServer(http.Dir("static"))
-	r.PathPrefix("/static").Handler(http.StripPrefix("/static", fs))
 
 	r.HandleFunc("/breakfast", func(w http.ResponseWriter, r *http.Request) {
 		//slog.Error("Called without implementation", "method", r.Method)
@@ -83,20 +70,6 @@ func main() {
 			"Eggs":     "Fried",
 			"Bacon":    "Venison",
 			"Sausages": "Pork",
-		})
-	})
-
-	r.HandleFunc("/search", func(w http.ResponseWriter, r *http.Request) {
-		slog.Info("Called search handler", "method", r.Method, "params", r.URL.Query())
-		query := r.Form.Get("query")
-		json.NewEncoder(w).Encode(struct {
-			Key   string
-			Value string
-			Query url.Values
-		}{
-			"query",
-			query,
-			r.URL.Query(),
 		})
 	})
 
