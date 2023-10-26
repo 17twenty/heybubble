@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.fade-in {
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.2s;
+}
+
+
+@keyframes fadeInOpacity {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
 #thinka {
   animation: loading-bar-morph 2s ease 0.1s infinite;
   transform-origin: center;

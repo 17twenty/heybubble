@@ -65,5 +65,9 @@ func main() {
 		}
 	})
 
+	r.HandleFunc("/insert", func(w http.ResponseWriter, r *http.Request) {
+		partialEncoder(w, "bubble", nil)
+	})
+
 	log.Fatal(http.ListenAndServe("0.0.0.0:"+port, r))
 }
