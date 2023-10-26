@@ -664,6 +664,10 @@ select {
   border-radius: 0.5rem;
 }
 
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
 .bg-slate-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(148 163 184 / var(--tw-bg-opacity));
@@ -709,18 +713,18 @@ select {
 }
 
 #thinkb {
-  -webkit-animation: button-bounce 2s ease 0.2s infinite;
-          animation: button-bounce 2s ease 0.2s infinite;
+  -webkit-animation: loading-bar-morph 2s ease 0.2s infinite;
+          animation: loading-bar-morph 2s ease 0.2s infinite;
   transform-origin: center;
 }
 
 #thinkc {
-  -webkit-animation: button-bounce 2s ease 0.4s infinite;
-          animation: button-bounce 2s ease 0.4s infinite;
+  -webkit-animation: loading-bar-morph 2s ease 0.4s infinite;
+          animation: loading-bar-morph 2s ease 0.4s infinite;
   transform-origin: center;
 }
 
-@-webkit-keyframes button-bounce {
+@-webkit-keyframes loading-bar-morph {
   0% {
     transform: translateY(-5px);
     filter: brightness(100%)
@@ -742,7 +746,7 @@ select {
   }
 }
 
-@keyframes button-bounce {
+@keyframes loading-bar-morph {
   0% {
     transform: translateY(-5px);
     filter: brightness(100%)
