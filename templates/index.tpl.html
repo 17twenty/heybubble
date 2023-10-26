@@ -54,7 +54,6 @@
         </div>
       </div>
 
-      
       <br />
       <div id="target" class="fade-in">
         <svg
@@ -100,7 +99,8 @@
       <br />
       <button class="bg-black text-white p-4 m-4 rounded-sm"
       hx-get="/insert"
-      hx-target="#target" hx-swap="outerHTML">Click Me</button>
+      hx-target="#target" hx-swap="beforebegin"
+      >Click Me</button>
     </div>
   </body>
 </html>
