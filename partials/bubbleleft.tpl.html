@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TEMPLATE BELOW</title>
+    <link rel="stylesheet" href="../static/css/main.css" />
 </head>
 <body>
-    {{define "bubble" }}
+    {{define "bubbleleft" }}
     <div
-        class="bg-neutral-200 inline-block rounded-lg mb-1 ml-3 p-3 max-w-md relative fade-in"
+        class="bg-neutral-200 inline-block rounded-lg mb-2 mt-2 ml-3 p-4 max-w-md relative fade-in"
       >
-        <p class>{{ . }}</p>
+        <p>{{ . }}</p>
         <div class="absolute -left-2 -bottom-1">
           <svg
             class="fill-neutral-200"
@@ -27,7 +28,6 @@
           </svg>
         </div>
       </div>
-      <br />
     {{end}}
 </body>
 </html>

@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 	"text/template"
 
 	"github.com/gorilla/mux"
@@ -58,15 +59,44 @@ func main() {
 	// Entry route
 	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		log.Println(r.Host)
-		tmpl := template.Must(template.ParseFiles("templates/index.tpl.html"))
-		err := tmpl.Lookup("index.tpl.html").Execute(w, nil)
+		tmpl := template.Must(template.ParseFiles("templates/index.tpl.html", "partials/thinking.tpl.html"))
+		err := tmpl.Lookup("index.tpl.html").Execute(w, "0")
 		if err != nil {
 			logger.Error("Failed to execute template", "template", tmpl.Name, "error", err)
 		}
 	})
 
-	r.HandleFunc("/insert", func(w http.ResponseWriter, r *http.Request) {
-		partialEncoder(w, "bubble", "Hello")
+	r.HandleFunc("/messages", func(w http.ResponseWriter, r *http.Request) {
+		// Get message
+		offset, _ := strconv.Atoi(r.URL.Query().Get("offset"))
+		// log.Println(offset)
+		msg := ""
+
+		switch offset {
+		case 1:
+			msg = "Hello there and welcome to my special place"
+		case 2:
+			msg = "I'm currently working as the Chief Technology and Product Officer at a company called FeeWise."
+		case 3:
+			msg = `You can find me at https://www.curiola.com / nick@curiola.com.`
+		}
+
+		// partialEncoder(w, "bubbleright", "Testing")
+		// If there's more, return thinking...
+		if offset < 4 {
+			if offset > 0 {
+				partialEncoder(w, "bubbleleft", msg)
+			}
+			partialEncoder(w, "thinking", struct {
+				Offset        int
+				MoreAvailable bool
+			}{
+				Offset:        offset + 1,
+				MoreAvailable: true,
+			})
+		} else {
+			w.WriteHeader(286)
+		}
 	})
 
 	log.Fatal(http.ListenAndServe("0.0.0.0:"+port, r))
