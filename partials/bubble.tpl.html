@@ -6,11 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    {{define "bubble"}}
+    {{define "bubble" }}
     <div
-        class="bg-neutral-200 inline-block rounded-lg mb-1 ml-3 p-2 max-w-md relative fade-in"
+        class="bg-neutral-200 inline-block rounded-lg mb-1 ml-3 p-3 max-w-md relative fade-in"
       >
-        <p class>I am a new message - how cool am I?</p>
+        <p class>{{ . }}</p>
         <div class="absolute -left-2 -bottom-1">
           <svg
             class="fill-neutral-200"
