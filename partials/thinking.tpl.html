@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="../static/css/main.css" />
   </head>
   <body>
-    {{define "thinking"}} {{if .MoreAvailable }}
-    <div id="thinking" class="mb-1 mt-1"
+    {{define "thinking"}}
+    <div id="thinking" class="mb-1 mt-1 drop-shadow-sm"
       hx-get="/messages?offset={{.Offset}}"
       hx-trigger="load delay:3s"
       hx-target="this"
-      hx-swap="innerHTML"
+      hx-swap="outerHTML"
     >
       <svg
         width="91"
@@ -54,6 +54,6 @@
         </g>
       </svg>
     </div>
-    {{end}} {{end}}
+    {{end}}
   </body>
 </html>
