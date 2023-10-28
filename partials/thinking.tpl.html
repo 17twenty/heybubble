@@ -8,11 +8,11 @@
   </head>
   <body>
     {{define "thinking"}}
-    <div id="thinking" class="mb-1 mt-1 drop-shadow-sm"
+    <div id="thinking" class="mb-1 mt-1"
       hx-get="/messages?offset={{.Offset}}"
       hx-trigger="load delay:3s"
       hx-target="this"
-      hx-swap="outerHTML"
+      hx-swap="outerHTML show:top"
     >
       <svg
         width="91"
