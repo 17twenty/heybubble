@@ -73,9 +73,9 @@ func main() {
 		msg := []string{
 			`<p>Hey 👋 - It's Nick, Welcome to the site.</p>`,
 			`<p>I'm currently the Chief Technology and Product Officer at a company called FeeWise.</p>`,
-			`<p>You can find me at <a class="text-blue-600 dark:text-blue-500 hover:underline" href="https://www.curiola.com">https://www.curiola.com</a> or you can drop me an email at <a class="text-blue-600 dark:text-blue-500 hover:underline" href="mailto:nick@curiola.com">nick@curiola.com</a>.</p>`,
+			`<p>You can find me at <a class="text-blue-600 text-blue-500 hover:underline" href="https://www.curiola.com">https://www.curiola.com</a> or you can drop me an email at <a class="text-blue-600 dark:text-blue-500 hover:underline" href="mailto:nick@curiola.com">nick@curiola.com</a>.</p>`,
 			`<p>I have worked across a number of technology and finance companies to build and execute on products and designs and currently act as an advisor and fractional CTO for a number of other startups here in Sydney, Australia.</p>`,
-			`<p>So if you want to chat, reach out or check me out on LinkedIn at <a class="text-blue-600 dark:text-blue-500 hover:underline" href="https://www.linkedin.com/in/nickglynn/">https://www.linkedin.com/in/nickglynn/</a>.</p>`,
+			`<p>So if you want to chat, reach out or check me out on LinkedIn at <a class="text-blue-600 hover:underline" href="https://www.linkedin.com/in/nickglynn/">https://www.linkedin.com/in/nickglynn/</a>.</p>`,
 		}
 
 		// If there's more, return thinking...
