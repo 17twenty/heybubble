@@ -91,6 +91,7 @@ func main() {
 		if offset < len(msg) {
 			if offset >= 0 {
 				partialEncoder(w, "bubbleleft", msg[offset])
+				// partialEncoder(w, "bubbleright", "Cool!")
 			}
 			partialEncoder(w, "thinking", struct {
 				Offset int
