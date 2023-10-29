@@ -7,6 +7,7 @@ import (
 	"os"
 	"strconv"
 	"text/template"
+	"time"
 
 	"github.com/gorilla/mux"
 	"golang.org/x/exp/slog"
@@ -70,6 +71,14 @@ func main() {
 		// Get message
 		offset, _ := strconv.Atoi(r.URL.Query().Get("offset"))
 		// log.Println(offset)
+
+		type Message struct {
+			HTMLContent string
+			Author      string
+			Timestamp   time.Time
+			IsAuthor    bool
+		}
+
 		msg := []string{
 			`<p>Hey 👋 - It's Nick, Welcome to the site.</p>`,
 			`<p>I'm currently the Chief Technology and Product Officer at a company called FeeWise.</p>`,
@@ -89,7 +98,7 @@ func main() {
 				Offset: offset + 1,
 			})
 		} else {
-			// This is the default to tell it to stop polling
+			// This is the default to tell htmx to stop polling
 			w.WriteHeader(286)
 		}
 	})
