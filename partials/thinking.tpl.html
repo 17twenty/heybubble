@@ -9,11 +9,16 @@
   <body>
     {{define "thinking"}}
     <div id="thinking" class="mb-1 mt-1"
+    
       hx-get="/messages?offset={{.Offset}}"
       hx-trigger="load delay:2s"
       hx-target="this"
       hx-swap="outerHTML show:top"
     >
+
+    <!-- p class="ml-3 mr-4 pl-4 text-xs text-gray-500 dark:text-gray-100">
+      Nick Glynn
+    </p -->
       <svg
         width="91"
         height="55"

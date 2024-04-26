@@ -61,6 +61,9 @@ func main() {
 	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		log.Println(r.Host)
 		tmpl := template.Must(template.ParseFiles("templates/index.tpl.html", "partials/thinking.tpl.html"))
+		for i := range tmpl.Templates() {
+			log.Println(tmpl.Templates()[i].Name())
+		}
 		err := tmpl.Lookup("index.tpl.html").Execute(w, "0")
 		if err != nil {
 			logger.Error("Failed to execute template", "template", tmpl.Name, "error", err)
